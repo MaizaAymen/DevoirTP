@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Produit{% endblock %}
+
+{% block body %}
+<h1>Edit Produit</h1>
+
+<form method="post">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" value="{{ produit.name }}" required><br><br>
+
+    <label for="price">Price (€):</label><br>
+    <input type="number" id="price" name="price" step="0.01" value="{{ produit.price }}" required><br><br>
+
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description" rows="4">{{ produit.description }}</textarea><br><br>
+
+    <button type="submit">Update</button>
+    <a href="{{ path('produit_list') }}">Cancel</a>
+</form>
+{% endblock %}

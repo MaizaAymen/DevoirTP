@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Produit{% endblock %}
+
+{% block body %}
+<h1>Add a New Produit</h1>
+
+<form method="post">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="price">Price (€):</label><br>
+    <input type="number" id="price" name="price" step="0.01" required><br><br>
+
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description" rows="4"></textarea><br><br>
+
+    <button type="submit">Save</button>
+    <a href="{{ path('produit_list') }}">Cancel</a>
+</form>
+{% endblock %}

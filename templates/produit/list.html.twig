@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block body %}
+<h1>Produit Dashboard</h1>
+
+{% if produits is empty %}
+    <p>No produits found. <a href="{{ path('produit_new') }}">Add one</a>.</p>
+{% else %}
+    {% for produit in produits %}
+        <details style="margin-bottom: 1em;">
+            <summary><strong>{{ produit.name }}</strong> ({{ produit.price }} €)</summary>
+            <div style="padding: 0.5em 1em;">
+                <p>{{ produit.description|default('No description') }}</p>
+                <p>
+                    <a href="{{ path('produit_edit', {'id': produit.id}) }}">Edit</a> |
+                    <a href="{{ path('produit_delete', {'id': produit.id}) }}" onclick="return confirm('Delete this produit?');">Delete</a>
+                </p>
+            </div>
+        </details>
+    {% endfor %}
+{% endif %}
+
+<a href="{{ path('produit_new') }}">+ New Produit</a>
+{% endblock %}
